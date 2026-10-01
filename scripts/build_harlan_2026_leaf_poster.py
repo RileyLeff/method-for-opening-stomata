@@ -330,10 +330,10 @@ def build():
         c.drawImage(str(path),x*72+(w*72-iw*scale)/2,H-(y+h)*72+dy,iw*scale,ih*scale,mask='auto')
     # Header, left: study system icons on a shared baseline, labelled.
     for filename,x,w,h,label,font in [
-            ('licor-6800-pencil.png',.6,4.3,3.0,'LI-6800','PlexSansBold'),
-            ('brownsville-forest-pencil.png',5.3,3.7,3.4,'Coastal forest','PlexSansBold'),
-            ('morella-pencil.png',9.45,3.05,4.6,'Morella cerifera','PlexSansBoldItalic'),
-            ('phragmites-pencil.png',12.95,3.05,4.6,'Phragmites australis','PlexSansBoldItalic')]:
+            ('morella-pencil.png',.6,3.05,4.6,'Morella cerifera','PlexSansBoldItalic'),
+            ('phragmites-pencil.png',4.1,3.05,4.6,'Phragmites australis','PlexSansBoldItalic'),
+            ('licor-6800-pencil.png',7.6,4.3,3.0,'LI-6800','PlexSansBold'),
+            ('brownsville-forest-pencil.png',12.35,3.7,3.4,'Coastal forest','PlexSansBold')]:
         logo(filename,x,5.1-h,w,h,'bottom')
         text(label,x+w/2,5.75,23,font,center=True)
     # Header, right: a 4-column grid. Row 1: partner marks;
