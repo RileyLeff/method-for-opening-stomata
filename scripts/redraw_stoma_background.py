@@ -23,6 +23,8 @@ from PIL import Image
 from scipy import ndimage as ndi
 from scipy.interpolate import UnivariateSpline
 
+import poster_warp
+
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / 'outputs/harlan_2026/assets'
 SOURCE = ASSETS / 'leaf-stoma-pencil.png'
@@ -32,8 +34,16 @@ LUMA = np.array([.299, .587, .114])
 Image.MAX_IMAGE_PIXELS = None
 
 
-def load():
+def load(stretch=True):
     src = np.asarray(Image.open(SOURCE).convert('RGB')).astype(np.float64)
+    if stretch:
+        # Resample the draft into the stretched poster layout before reading it.
+        h, w = src.shape[:2]
+        px = poster_warp.PAGE_H / h
+        rows = poster_warp.to_src((np.arange(h) + .5) * px) / px - .5
+        yy, xx = np.meshgrid(rows, np.arange(w), indexing='ij')
+        src = np.stack([ndi.map_coordinates(src[..., k], [yy, xx], order=3, mode='nearest')
+                        for k in range(3)], axis=2)
     ink = np.clip(PAPER @ LUMA - src @ LUMA, 0, None)
     chroma = np.linalg.norm(src - PAPER, axis=2)
     return src, np.maximum(ink, chroma * .6)
@@ -338,9 +348,9 @@ def upsample(field, out_hw):
     return out if field.ndim == 3 else out[..., 0]
 
 
-def render(ppi, out_path, density=1.0, seed=7):
+def render(ppi, out_path, density=1.0, seed=7, stretch=True):
     rng = np.random.default_rng(seed)
-    src, ink = load()
+    src, ink = load(stretch)
     sh, sw = ink.shape
     W, H = int(round(PAGE_IN * ppi)), int(round(PAGE_IN * ppi * sh / sw))
     scale = W / sw
@@ -403,5 +413,7 @@ if __name__ == '__main__':
     ap.add_argument('--ppi', type=int, default=300)
     ap.add_argument('--density', type=float, default=1.0)
     ap.add_argument('--out', type=Path, default=ASSETS / 'leaf-stoma-pencil-300ppi.jpg')
+    ap.add_argument('--flat', action='store_true',
+                    help='original layout, without the poster_warp stretch')
     args = ap.parse_args()
-    render(args.ppi, args.out, args.density)
+    render(args.ppi, args.out, args.density, stretch=not args.flat)
