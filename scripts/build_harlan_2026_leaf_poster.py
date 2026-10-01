@@ -61,6 +61,25 @@ def areal_fonts():
                          'mathtext.rm':'Areal Poster', 'mathtext.it':'Areal Poster:italic',
                          'mathtext.bf':'Areal Poster:bold', 'mathtext.sf':'Areal Poster'})
 
+def knockout(path):
+    """Copy of a logo with its white surround made transparent (only white
+    connected to the border, so white lettering inside the mark survives)."""
+    from scipy import ndimage as ndi
+    im = Image.open(path).convert('RGBA')
+    a = np.asarray(im).copy()
+    white = a[..., :3].min(axis=2) > 235
+    lab, _ = ndi.label(white)
+    edge = np.unique(np.concatenate([lab[0], lab[-1], lab[:, 0], lab[:, -1]]))
+    bg = np.isin(lab, edge[edge > 0])
+    # Feather the cut so JPEG fringes don't leave a halo.
+    soft = ndi.gaussian_filter(bg.astype(float), 1.0)
+    a[..., 3] = (a[..., 3] * (1 - soft)).astype(np.uint8)
+    out = TMP / f'knockout-{path.stem}.png'
+    # Trim to the mark itself so every logo is sized by its visible extent.
+    im = Image.fromarray(a)
+    im.crop(im.getchannel('A').point(lambda v: 255 if v > 8 else 0).getbbox()).save(out)
+    return out
+
 def save(fig, name):
     # dpi only affects rasterized artists (the 3D surface); 600 ppi at print size.
     fig.savefig(TMP / f'{name}.pdf', transparent=True, dpi=600)
@@ -128,11 +147,10 @@ def method_plot():
                va='bottom', fontsize=22, fontweight='bold', color=base.INK)
     ax = axes_in(fig, x, 1.45, w, main_h)
     ax.plot(control.minute, control.gsw, color=base.SECONDARY, lw=5, solid_capstyle='round')
-    ax.set(xlim=(0,120), ylim=(0,.04), xticks=[0,60,120], yticks=[0,.02,.04])
+    # Same y-scale as the treatment leaf so the two can be compared directly.
+    ax.set(xlim=(0,120), ylim=(0,.24), xticks=[0,60,120], yticks=[0,.1,.2])
     ax.set_xlabel(time_label, fontsize=26, labelpad=10)
     clean(ax)
-    ax.text(.97, .06, 'y-axis zoomed 6×', transform=ax.transAxes, ha='right', va='bottom',
-            fontsize=19, color=base.SECONDARY)
     save(fig, 'method')
 
 def capacity_plot():
@@ -170,8 +188,20 @@ def capacity_plot():
         ax.tick_params(labelsize=26, pad=8)
         ax.spines[['top','right','left']].set_visible(False)
     axes[0].set_ylabel('Posterior density', fontsize=23, labelpad=10)
-    axes[1].legend(loc='upper left', fontsize=22, frameon=True, framealpha=.9, facecolor='#F4F8F1',
-                   edgecolor='none', handlelength=1.6, borderpad=.6, labelspacing=.5)
+    # Direct labels on the outer flank of each curve in the Vcmax panel.
+    ax = axes[0]
+    xx = np.linspace(0, 130, 800)
+    top = ax.get_ylim()[1] / 1.3
+    for (zone, color, label), side, text_xy in zip(groups, ['left','right'], [(0, .86), (50, .5)]):
+        yy = gaussian_kde(draws['Vcmax25'][zone])(xx)
+        peak = int(yy.argmax())
+        flank = np.arange(peak) if side == 'left' else np.arange(peak, len(xx))
+        i = flank[np.argmin(np.abs(yy[flank] - yy[peak] * (.88 if side == 'left' else .5)))]
+        name, n = label.split(' (')
+        ax.annotate(f'{name}\n({n}', xy=(xx[i], yy[i]), xytext=(text_xy[0], text_xy[1] * top * 1.3),
+                    ha='left', va='bottom' if side == 'left' else 'center', fontsize=22,
+                    fontweight='bold', color=base.INK, linespacing=1.1,
+                    arrowprops={'arrowstyle':'-', 'color':color, 'lw':3, 'shrinkA':6, 'shrinkB':2})
     save(fig, 'capacity')
 
 def surface_plot():
@@ -250,9 +280,10 @@ def build():
         for s,sz,rise in runs:
             c.setFont(fonts[font],sz); c.drawString(cx,H-y*72+rise,s)
             cx+=pdfmetrics.stringWidth(s,fonts[font],sz)
-    text('Forcing Plants to Participate',24,2.3,104,'PlexSerifBold',center=True)
-    text('Riley Leff, Acadia Conboy, Keryn Gedan',24,3.4,37,center=True)
-    text('Department of Biological Sciences, George Washington University',24,4.1,26,center=True)
+    text('Forcing Plants',24,2.1,150,'PlexSerifBold',center=True)
+    text('to Participate',24,3.98,150,'PlexSerifBold',center=True)
+    text('Riley Leff, Acadia Conboy, Keryn Gedan',24,5.0,44,center=True)
+    text('Department of Biological Sciences, George Washington University',24,5.68,30,center=True)
     text('Morella cerifera',11.8,8.2,30,'PlexSansBoldItalic',center=True)
     text('Morella cerifera',36.3,8.2,30,'PlexSansBoldItalic',center=True)
     text('Low CO₂ forces plants to open their stomata.',11.8,16.45,28,'PlexSansBold',center=True)
@@ -292,38 +323,40 @@ def build():
     text('is also higher.',41.1,33.95,21,'PlexSansBold',center=True)
     def logo(filename,x,y,w,h,valign='center'):
         path=ASSETS/filename
+        if 'pencil' not in filename: path=knockout(path)
         im=Image.open(path); iw,ih=im.size
         scale=min(w*72/iw,h*72/ih)
         dy={'center':(h*72-ih*scale)/2,'bottom':0}[valign]
         c.drawImage(str(path),x*72+(w*72-iw*scale)/2,H-(y+h)*72+dy,iw*scale,ih*scale,mask='auto')
-    # Header, left: study system icons sitting on a shared baseline, labelled.
+    # Header, left: study system icons on a shared baseline, labelled.
     for filename,x,w,h,label,font in [
-            ('licor-6800-pencil.png',.7,3.4,3.0,'LI-6800','PlexSansBold'),
-            ('brownsville-forest-pencil.png',4.3,3.2,3.2,'Coastal forest','PlexSansBold'),
-            ('morella-pencil.png',7.65,2.85,4.0,'Morella cerifera','PlexSansBoldItalic'),
-            ('phragmites-pencil.png',10.75,2.85,4.0,'Phragmites australis','PlexSansBoldItalic')]:
-        logo(filename,x,4.85-h,w,h,'bottom')
-        text(label,x+w/2,5.4,21,font,center=True)
-    # Header, right: funders and partners, then the QR code.
-    logo('gw-biology-hand-drawn.jpg',34.6,.75,2.1,1.95)
-    logo('nsf.png',37.15,.75,1.95,1.95)
-    text('NSF GRFP',38.12,3.05,19,'PlexSansBold',center=True)
-    logo('vcr-lter.png',39.6,.75,1.95,1.95)
-    logo('quadrat-labs.png',41.95,.75,2.15,1.95)
-    text('Quadrat Labs',43.02,3.05,19,'PlexSansBold',center=True)
-    logo('astera.png',35.9,3.55,7.0,1.35)
+            ('licor-6800-pencil.png',.6,4.3,3.0,'LI-6800','PlexSansBold'),
+            ('brownsville-forest-pencil.png',5.3,3.7,3.4,'Coastal forest','PlexSansBold'),
+            ('morella-pencil.png',9.45,3.05,4.6,'Morella cerifera','PlexSansBoldItalic'),
+            ('phragmites-pencil.png',12.95,3.05,4.6,'Phragmites australis','PlexSansBoldItalic')]:
+        logo(filename,x,5.1-h,w,h,'bottom')
+        text(label,x+w/2,5.75,23,font,center=True)
+    # Header, right: a 4-column grid. Row 1: partner marks with captions;
+    # row 2: Astera wordmark across two columns, then the QR code and its caption.
+    col=[31.7+i*3.95 for i in range(4)]
+    # Box heights are optical: seals read smaller than a solid square of the same size.
+    for i,(filename,label,h) in enumerate([('nsf.png','NSF GRFP',2.15),('vcr-lter.png','VCR LTER',2.1),
+                                            ('gw-biology-hand-drawn.jpg','GW Biology',1.85),
+                                            ('quadrat-labs.png','Quadrat Labs',1.7)]):
+        logo(filename,col[i]+.4,.55+(2.15-h)/2,3.15,h)
+        text(label,col[i]+1.975,3.15,22,'PlexSansBold',center=True)
+    logo('astera.png',col[0]+.3,3.75,7.3,1.55)
     url='https://rileyleff.com/blog/forcing-plants-to-participate'
-    qr=qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_M,border=4)
+    qr=qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_M,border=0)
     qr.add_data(url); qr.make(fit=True)
-    matrix=qr.get_matrix(); size=2.4*72; module=size/len(matrix)
-    x0,y0=44.75*72,H-3.25*72
-    c.setFillColor(HexColor('#FFFFFF')); c.rect(x0,y0,size,size,fill=1,stroke=0)
+    matrix=qr.get_matrix(); size=2.05*72; module=size/len(matrix)
+    x0,y0=(col[2]+1.0)*72,H-5.75*72
     c.setFillColor(HexColor('#10271C'))
     for row,line in enumerate(matrix):
-        for col,dark in enumerate(line):
-            if dark: c.rect(x0+col*module,y0+size-(row+1)*module,module,module,fill=1,stroke=0)
-    text('Read The Story on',45.95,3.7,19,'PlexSansBold',center=True)
-    text('rileyleff.com',45.95,4.05,19,'PlexSansBold',center=True)
+        for col_,dark in enumerate(line):
+            if dark: c.rect(x0+col_*module,y0+size-(row+1)*module,module,module,fill=1,stroke=0)
+    text('Read the story',col[3]+.35,4.55,26,'PlexSansBold')
+    text('rileyleff.com',col[3]+.35,5.05,26,'PlexSans')
     c.linkURL(url,(x0,y0,x0+size,y0+size),relative=0)
     c.showPage(); c.save()
     writer=PdfWriter(); page=writer.add_page(PdfReader(TMP/'base.pdf').pages[0])
