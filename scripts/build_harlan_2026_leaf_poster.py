@@ -61,16 +61,17 @@ def areal_fonts():
                          'mathtext.rm':'Areal Poster', 'mathtext.it':'Areal Poster:italic',
                          'mathtext.bf':'Areal Poster:bold', 'mathtext.sf':'Areal Poster'})
 
-def knockout(path):
-    """Copy of a logo with its white surround made transparent (only white
-    connected to the border, so white lettering inside the mark survives)."""
+def knockout(path, enclosed=False):
+    """Copy of a logo with its white surround made transparent. Only white
+    connected to the border goes, so white lettering inside a mark survives;
+    enclosed=True also clears white pockets (for pure line art)."""
     from scipy import ndimage as ndi
     im = Image.open(path).convert('RGBA')
     a = np.asarray(im).copy()
     white = a[..., :3].min(axis=2) > 235
     lab, _ = ndi.label(white)
     edge = np.unique(np.concatenate([lab[0], lab[-1], lab[:, 0], lab[:, -1]]))
-    bg = np.isin(lab, edge[edge > 0])
+    bg = white if enclosed else np.isin(lab, edge[edge > 0])
     # Feather the cut so JPEG fringes don't leave a halo.
     soft = ndi.gaussian_filter(bg.astype(float), 1.0)
     a[..., 3] = (a[..., 3] * (1 - soft)).astype(np.uint8)
@@ -323,7 +324,7 @@ def build():
     text('is also higher.',41.1,33.95,21,'PlexSansBold',center=True)
     def logo(filename,x,y,w,h,valign='center'):
         path=ASSETS/filename
-        if 'pencil' not in filename: path=knockout(path)
+        if 'pencil' not in filename: path=knockout(path,enclosed=filename=='quadrat-labs.png')
         im=Image.open(path); iw,ih=im.size
         scale=min(w*72/iw,h*72/ih)
         dy={'center':(h*72-ih*scale)/2,'bottom':0}[valign]
