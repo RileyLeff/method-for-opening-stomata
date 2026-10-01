@@ -139,11 +139,11 @@ def method_plot():
                 ax.axhline(value,color=base.SECONDARY,lw=2,ls=(0,(3,4)),alpha=.85)
                 ax.text(xpos,value+.4,name,transform=ax.get_yaxis_transform(),
                         color=base.INK,fontsize=21,va='bottom')
-    # Control leaf: same light and VPD, CO2 never stepped down.
+    # Unmanipulated second leaf: same light and VPD, CO2 never stepped down.
     x, w = 15.6, 4.3
     strip = axes_in(fig, x, strip_y, w, strip_h)
     co2_strip(strip, control.minute, control.Ca, [{'start':0, 'end':120, 'co2':420}])
-    strip.text(.5, 1.14, 'Control leaf', transform=strip.transAxes, ha='center',
+    strip.text(.5, 1.14, 'Unmanipulated leaf', transform=strip.transAxes, ha='center',
                va='bottom', fontsize=22, fontweight='bold', color=base.INK)
     ax = axes_in(fig, x, 1.45, w, main_h)
     ax.plot(control.minute, control.gsw, color=base.SECONDARY, lw=5, solid_capstyle='round')
