@@ -336,15 +336,13 @@ def build():
             ('phragmites-pencil.png',12.95,3.05,4.6,'Phragmites australis','PlexSansBoldItalic')]:
         logo(filename,x,5.1-h,w,h,'bottom')
         text(label,x+w/2,5.75,23,font,center=True)
-    # Header, right: a 4-column grid. Row 1: partner marks with captions;
+    # Header, right: a 4-column grid. Row 1: partner marks;
     # row 2: Astera wordmark across two columns, then the QR code and its caption.
     col=[31.7+i*3.95 for i in range(4)]
     # Box heights are optical: seals read smaller than a solid square of the same size.
-    for i,(filename,label,h) in enumerate([('nsf.png','NSF GRFP',2.15),('vcr-lter.png','VCR LTER',2.1),
-                                            ('gw-biology-hand-drawn.jpg','GW Biology',1.85),
-                                            ('quadrat-labs.png','Quadrat Labs',1.7)]):
-        logo(filename,col[i]+.4,.55+(2.15-h)/2,3.15,h)
-        text(label,col[i]+1.975,3.15,22,'PlexSansBold',center=True)
+    for i,(filename,h) in enumerate([('nsf.png',2.55),('vcr-lter.png',2.5),
+                                      ('gw-biology-hand-drawn.jpg',2.2),('quadrat-labs.png',2.0)]):
+        logo(filename,col[i]+.3,.6+(2.55-h)/2,3.35,h)
     logo('astera.png',col[0]+.3,3.75,7.3,1.55)
     url='https://rileyleff.com/blog/forcing-plants-to-participate'
     qr=qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_M,border=0)
