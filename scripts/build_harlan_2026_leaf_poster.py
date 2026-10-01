@@ -236,7 +236,7 @@ def surface_plot():
 def npq_plot():
     leaves = pd.read_csv(ROOT/'outputs/phrag_brownsville_npq_overall_leaf_means.csv')
     fig, ax = plt.subplots(figsize=(7, 7))
-    fig.subplots_adjust(left=.2, right=.95, bottom=.27, top=.8)
+    fig.subplots_adjust(left=.24, right=.95, bottom=.29, top=.76)
     for x, zone, color in [(0,'High',base.BLUE),(1,'Low',base.ORANGE)]:
         vals = leaves.loc[leaves.zone.eq(zone),'NPQ'].to_numpy()
         ax.hlines(vals.mean(), x-.24, x+.24, color=color, lw=5, zorder=2)
@@ -246,9 +246,15 @@ def npq_plot():
     ax.set_xticklabels(['Low salinity\n(n = 3)','High salinity\n(n = 4)'], fontsize=22)
     clean(ax)
     ax.tick_params(axis='x', labelsize=22)
-    ax.set_title('NPQ (dimensionless)\nHeat-dissipation index', fontsize=24, fontweight='bold', pad=18)
-    ax.text(.5, -.42, 'Points: leaf means; bar: group mean\nmatched Q–Ci grid', ha='center', va='top',
-            transform=ax.transAxes, fontsize=18, color=base.SECONDARY, linespacing=1.15)
+    # Header and footnote in figure coordinates, centred on the axes.
+    cx = (.24 + .95) / 2
+    fig.text(cx, .965, 'Non-photochemical quenching', ha='center', va='top', fontsize=24,
+             fontweight='bold', color=base.INK)
+    fig.text(cx, .905, '(NPQ): excess light safely\nconverted into heat', ha='center', va='top',
+             fontsize=20, color=base.INK, linespacing=1.1)
+    ax.set_ylabel('NPQ (dimensionless)', fontsize=19, labelpad=8)
+    fig.text(cx, .02, 'Points: leaf means; bar: group mean\nmatched Q–Ci grid', ha='center', va='bottom',
+             fontsize=18, color=base.SECONDARY, linespacing=1.15)
     save(fig, 'npq')
 
 def plots():
@@ -319,9 +325,9 @@ def build():
          12,34.05,25)
     text('A representative photosynthetic',31.9,33.6,24,'PlexSansBold',center=True)
     text('response surface.',31.9,34.05,24,'PlexSansBold',center=True)
-    text('Higher NPQ at higher salinity,',41.1,33.15,21,'PlexSansBold',center=True)
-    text('where light availability',41.1,33.55,21,'PlexSansBold',center=True)
-    text('is also higher.',41.1,33.95,21,'PlexSansBold',center=True)
+    text('Higher NPQ at higher salinity,',41.75,33.15,21,'PlexSansBold',center=True)
+    text('where light availability',41.75,33.55,21,'PlexSansBold',center=True)
+    text('is also higher.',41.75,33.95,21,'PlexSansBold',center=True)
     def logo(filename,x,y,w,h,valign='center'):
         path=ASSETS/filename
         if 'pencil' not in filename: path=knockout(path,enclosed=filename=='quadrat-labs.png')
