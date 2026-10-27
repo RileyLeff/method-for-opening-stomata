@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "Please cite this repository and the specific commit or release used."
+type: software
+title: "Forcing Plants to Participate: LI-6800 programs, coastal photosynthesis data, and analyses"
+authors:
+  - family-names: Leff
+    given-names: Riley
+  - family-names: Conboy
+    given-names: Acadia
+  - family-names: Gedan
+    given-names: Keryn
+repository-code: "https://github.com/RileyLeff/photo26"
+url: "https://rileyleff.com/blog/forcing-plants-to-participate"
+license:
+  - MIT
+  - CC-BY-4.0
+keywords:
+  - photosynthesis
+  - LI-6800
+  - Phragmites australis
+  - Morella cerifera
+  - chlorophyll fluorescence

@@ -1,0 +1,57 @@
+path,status,imports,release_destination
+bp/aciq_dat_biochemical_limits_fixed_h2or_flow600.py,syntax OK; not executed,bpdefs,GitHub; distinguish final program from historical variants
+bp/aciq_dat_bucket_highq_test3.py,syntax OK; not executed,bpdefs,GitHub; distinguish final program from historical variants
+bp/aciq_dat_bucket_highq_vpd1_flow600.py,syntax OK; not executed,bpdefs,GitHub; distinguish final program from historical variants
+bp/aciq_dat_fixed_h2or_async_mpf_flow600.py,syntax OK; not executed,bpdefs,GitHub; distinguish final program from historical variants
+bp/h2o_flash_actuator_diagnostic.py,syntax OK; not executed,bpdefs,GitHub; distinguish final program from historical variants
+bp/morella_tpu_step_test.py,syntax OK; not executed,bpdefs,GitHub; distinguish final program from historical variants
+bp/qac_dat_test2.py,syntax OK; not executed,bpdefs,GitHub; distinguish final program from historical variants
+bp/test1.py,syntax OK; not executed,bpdefs,GitHub; distinguish final program from historical variants
+scripts/analyze_bptest_dynamic_ramp.py,syntax OK; not executed,__future__;matplotlib.cm;matplotlib.colors;matplotlib.pyplot;numpy;pandas;pathlib;photo26.curves;seaborn,GitHub candidate
+scripts/analyze_h2o_flash_diagnostic.py,syntax OK; not executed,matplotlib.pyplot;numpy;pandas;pathlib;photo26.curves;seaborn,GitHub candidate
+scripts/analyze_morella_aqc_surface.py,syntax OK; not executed,__future__;json;matplotlib.cm;matplotlib.colors;matplotlib.pyplot;numpy;pandas;pathlib;photo26.curves;scipy.interpolate;seaborn;typing,GitHub candidate
+scripts/analyze_morella_capacities.py,syntax OK; not executed,__future__;matplotlib.pyplot;numpy;pandas;pathlib;photo26.curves;scipy.optimize;seaborn,GitHub candidate
+scripts/analyze_morella_outside_regular.py,syntax OK; not executed,analyze_phrag_bucket_highq;pathlib,GitHub candidate
+scripts/analyze_morella_tpu_step_test.py,syntax OK; not executed,__future__;matplotlib.pyplot;numpy;pandas;pathlib;photo26.curves;seaborn,GitHub candidate
+scripts/analyze_phrag_aq_dark_rerun.py,syntax OK; not executed,__future__;json;matplotlib.cm;matplotlib.colors;matplotlib.pyplot;numpy;pandas;pathlib;photo26.curves;scipy.interpolate;seaborn;typing,GitHub candidate
+scripts/analyze_phrag_brownsville_additive_yields.py,syntax OK; not executed,__future__;matplotlib.patches;matplotlib.pyplot;numpy;pandas;pathlib;seaborn,GitHub candidate
+scripts/analyze_phrag_brownsville_biochemical_limits.py,syntax OK; not executed,__future__;dataclasses;json;matplotlib.cm;matplotlib.colors;matplotlib.lines;matplotlib.pyplot;numpy;pandas;pathlib;photo26.curves;re;scipy.interpolate;seaborn,GitHub candidate
+scripts/analyze_phrag_brownsville_cohort.py,syntax OK; not executed,__future__;analyze_phrag_brownsville_biochemical_limits;itertools;matplotlib.cm;matplotlib.colors;matplotlib.lines;matplotlib.pyplot;numpy;pandas;pathlib;scipy.optimize;seaborn,GitHub candidate
+scripts/analyze_phrag_brownsville_salinity_edge.py,syntax OK; not executed,analyze_phrag_bucket_highq;pathlib,GitHub candidate
+scripts/analyze_phrag_brownsville_tier_a.py,syntax OK; not executed,__future__;matplotlib.pyplot;numpy;pandas;pathlib;seaborn,GitHub candidate
+scripts/analyze_phrag_brownsville_tier_b.py,syntax OK; not executed,__future__;matplotlib.pyplot;numpy;pandas;pathlib;scipy.optimize;seaborn,GitHub candidate
+scripts/analyze_phrag_brownsville_tier_c_bayesian.py,syntax OK; not executed,__future__;argparse;arviz;matplotlib.pyplot;numpy;pandas;pathlib;pymc;pytensor.tensor;seaborn,GitHub candidate
+scripts/analyze_phrag_brownsville_upland.py,syntax OK; not executed,analyze_phrag_bucket_highq;pathlib,GitHub candidate
+scripts/analyze_phrag_brownsville_upland_late_repeat.py,syntax OK; not executed,analyze_phrag_bucket_highq;pathlib,GitHub candidate
+scripts/analyze_phrag_bucket_highq.py,syntax OK; not executed,__future__;json;matplotlib.cm;matplotlib.colors;matplotlib.lines;matplotlib.pyplot;numpy;pandas;pathlib;photo26.curves;scipy.interpolate;seaborn;typing,GitHub candidate
+scripts/analyze_phrag_crc_fixed_h2or_async.py,syntax OK; not executed,__future__;analyze_phrag_bucket_highq;json;matplotlib.pyplot;numpy;pandas;pathlib;photo26.curves;re;seaborn,GitHub candidate
+scripts/analyze_phrag_crc_indoor_controller_test.py,syntax OK; not executed,analyze_phrag_bucket_highq;matplotlib.cm;matplotlib.colors;matplotlib.pyplot;pandas;pathlib;seaborn,GitHub candidate
+scripts/analyze_phrag_crc_indoor_vpd_flow600.py,syntax OK; not executed,analyze_phrag_bucket_highq;matplotlib.cm;matplotlib.colors;matplotlib.pyplot;pandas;pathlib;seaborn,GitHub candidate
+scripts/analyze_phrag_indoor_tpu_controller_test.py,syntax OK; not executed,matplotlib.pyplot;pandas;pathlib;photo26.curves;seaborn,GitHub candidate
+scripts/audit_release_inventory.py,syntax OK; not executed,__future__;analyze_phrag_brownsville_biochemical_limits;analyze_phrag_brownsville_cohort;argparse;ast;csv;hashlib;pathlib;subprocess,GitHub candidate
+scripts/build_harlan_2026.py,syntax OK; not executed,__future__;html;json;matplotlib;matplotlib.lines;matplotlib.pyplot;numpy;pandas;pathlib;plot_phrag_brownsville_capacity_envelopes_literature;pypdf;reportlab.lib.colors;reportlab.lib.styles;reportlab.pdfbase;reportlab.pdfbase.ttfonts;reportlab.pdfgen.canvas;reportlab.platypus;scipy.stats;xarray,optional presentation tooling; portability review
+scripts/build_harlan_2026_leaf_poster.py,syntax OK; not executed,PIL;build_harlan_2026;fontTools.ttLib;fontTools.varLib.instancer;json;math;matplotlib;matplotlib.colors;matplotlib.pyplot;numpy;pandas;pathlib;photo26.control_plots;poster_warp;pypdf;qrcode;reportlab.lib.colors;reportlab.pdfbase;reportlab.pdfbase.ttfonts;reportlab.pdfgen.canvas;scipy;scipy.stats;xarray,optional presentation tooling; portability review
+scripts/build_hidden_science_pdf.py,syntax OK; not executed,PIL;__future__;html;json;matplotlib;matplotlib.pyplot;numpy;pathlib;pypdf;re;reportlab.lib.colors;reportlab.lib.enums;reportlab.lib.pagesizes;reportlab.lib.styles;reportlab.lib.utils;reportlab.pdfbase;reportlab.pdfbase.ttfonts;reportlab.pdfgen.canvas;reportlab.platypus;subprocess,optional presentation tooling; portability review
+scripts/compare_morella_regular_runs.py,syntax OK; not executed,matplotlib.pyplot;numpy;pandas;pathlib;seaborn,GitHub candidate
+scripts/compare_phrag_brownsville_positions.py,syntax OK; not executed,matplotlib.pyplot;numpy;pandas;pathlib;seaborn,GitHub candidate
+scripts/compare_phrag_brownsville_upland_repeat.py,syntax OK; not executed,compare_phrag_brownsville_positions;matplotlib.pyplot;numpy;pandas;pathlib;seaborn,GitHub candidate
+scripts/export_blog_interactives.py,syntax OK; not executed,__future__;argparse;json;math;numpy;pandas;pathlib;photo26.control_plots,GitHub candidate
+scripts/fit_morella_photorch.py,syntax OK; not executed,__future__;argparse;numpy;pandas;pathlib;photo26.curves;photorch;torch,GitHub candidate
+scripts/fit_phrag_fvcb_surface.py,syntax OK; not executed,__future__;matplotlib.pyplot;numpy;pandas;pathlib;photo26.curves;scipy.optimize;seaborn,GitHub candidate
+scripts/make_morella_poster_figures.py,syntax OK; not executed,__future__;matplotlib.cm;matplotlib.colors;matplotlib.pyplot;numpy;pandas;pathlib;photo26.control_plots;photo26.curves;scipy.interpolate;seaborn;zipfile,GitHub candidate
+scripts/make_morella_slide6_figure.py,syntax OK; not executed,__future__;matplotlib.pyplot;numpy;pandas;pathlib;seaborn,GitHub candidate
+scripts/package_valid_phrag_leaves.py,syntax OK; not executed,__future__;argparse;datetime;io;pandas;pathlib;zipfile,GitHub candidate
+scripts/plot_phrag_brownsville_capacity_envelopes_literature.py,syntax OK; not executed,__future__;matplotlib.lines;matplotlib.pyplot;numpy;pandas;pathlib;scipy.stats;seaborn;xarray,GitHub candidate
+scripts/plot_phrag_brownsville_npq.py,syntax OK; not executed,__future__;matplotlib.pyplot;numpy;pandas;pathlib;seaborn,GitHub candidate
+scripts/plot_phrag_dat_2021_fit.py,syntax OK; not executed,__future__;matplotlib.pyplot;numpy;pandas;pathlib;seaborn,GitHub candidate
+scripts/plot_phrag_qci_surface.py,syntax OK; not executed,__future__;json;matplotlib.cm;matplotlib.colors;matplotlib.pyplot;numpy;pandas;pathlib;photo26.curves;scipy.interpolate;seaborn;typing,GitHub candidate
+scripts/poster_warp.py,syntax OK; not executed,numpy,optional presentation tooling; portability review
+scripts/redraw_stoma_background.py,syntax OK; not executed,PIL;argparse;numpy;pathlib;poster_warp;scipy;scipy.interpolate;skia,optional presentation tooling; portability review
+scripts/summarize_phrag_brownsville_order_standardization.py,syntax OK; not executed,__future__;arviz;matplotlib.pyplot;numpy;pandas;pathlib;seaborn;xarray,GitHub candidate
+scripts/test_phrag_brownsville_npq_zone_difference.py,syntax OK; not executed,__future__;itertools;numpy;pandas;pathlib;scipy,GitHub candidate
+scripts/try_xy_photosynthesis.py,syntax OK; not executed,__future__;numpy;pandas;pathlib;xy,optional presentation tooling; portability review
+src/photo26/__init__.py,syntax OK; not executed,curves,GitHub candidate
+src/photo26/control_plots.py,syntax OK; not executed,__future__;curves;matplotlib.gridspec;matplotlib.patches;matplotlib.pyplot;numpy;pandas;pathlib;seaborn,GitHub candidate
+src/photo26/curves.py,syntax OK; not executed,__future__;dataclasses;matplotlib.pyplot;numpy;pandas;pathlib;scipy.optimize;seaborn,GitHub candidate
+src/photo26/photorch_fit.py,syntax OK; not executed,__future__;curves;numpy;pandas;pathlib;photorch;torch;typing,GitHub candidate
+tmp/harlan_2026/extract_logo_assets.py,syntax OK; not executed,PIL;pathlib;struct,local-only; third-party rights or temporary assets

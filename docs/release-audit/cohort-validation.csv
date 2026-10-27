@@ -1,0 +1,16 @@
+run_code,source_log,raw_gas_rows,flash_json_records,active_flash_records,dark_flash_json_records,active_flashes_with_gas_A,core_clean_rows_before_cohort_filter
+P01,data/2026-07-24_phrag_brownsville_p01_biochemical_limits/2026-07-24-1101_logdata_phrag_brwns_P017242026,5169,55,54,1,54,3596
+P04,data/2026-07-24_phrag_brownsville_p04_biochemical_limits/2026-07-24-1415_logdata_Phra_brwns_P047242026,5164,55,54,1,54,3595
+P02,data/2026-07-26_phrag_brownsville_p02_biochemical_limits/2026-07-26-1046_logdata_phrag_brws_P027262026,5528,63,62,1,62,3765
+P03,data/2026-07-26_phrag_brownsville_p03_biochemical_limits/2026-07-26-1344_logdata_phrag_brwns_P037262026,5185,54,54,0,54,3611
+P05,data/2026-07-27_phrag_brownsville_p05_biochemical_limits/2026-07-27-0937_logdata_phrag_brwns_P057272026,5989,96,94,2,90,3527
+P06,data/2026-07-27_phrag_brownsville_p06_biochemical_limits/2026-07-27-1239_logdata_phrag_brws_P067272026,5114,54,54,0,54,3556
+P07,data/2026-07-27_phrag_brownsville_p07_biochemical_limits/2026-07-27-1541_logdata_phrag_brwns_P077272026,5134,54,54,0,54,3624
+P08,data/2026-07-28_phrag_brownsville_p08_biochemical_limits/2026-07-28-1435_logdata_phrag_brwns_P087282026,5190,55,54,1,54,3609
+P09,data/2026-07-28_phrag_brownsville_p09_biochemical_limits/2026-07-28-1734_logdata_phrag_brwns_P097282026,5130,54,54,0,54,2291
+P10,data/2026-07-30_phrag_brownsville_p10_biochemical_limits/2026-07-30-0731_logdata_phrag_brwns_P107302026,5173,55,54,1,54,3613
+P11,data/2026-07-30_phrag_brownsville_p11_biochemical_limits/2026-07-30-1108_logdata_pharg_brwns_P117302026,5170,55,54,1,54,3640
+P12,data/2026-07-30_phrag_brownsville_p12_biochemical_limits/2026-07-30-1413_logdata_phrag_brwns_P127302026,5156,55,54,1,54,3579
+P13,data/2026-07-30_phrag_brownsville_p13_biochemical_limits/2026-07-30-1715_logdata_phrag_brwns_P137302026,5165,55,54,1,54,3671
+P14,data/2026-07-31_phrag_brownsville_p14_biochemical_limits/2026-07-31-1016_logdata_phrag_brwns_P147312026,5178,55,54,1,54,3601
+P15,data/2026-07-31_phrag_brownsville_p15_biochemical_limits/2026-07-31-1313_logdata_phrag_brwns_P0157312026,5131,54,54,0,54,3582

@@ -1,0 +1,12 @@
+metric,value,detail
+log_rows,2495.0,
+unique_light_ids_in_log,42.0,
+unique_light_ids_matched,42.0,
+unique_dark_ids_in_log,8.0,
+unique_dark_ids_matched,8.0,
+flash_json_total,50.0,
+flash_json_active,42.0,
+flash_json_dark,8.0,
+minimum_flash_spacing_sec,60.90000009536743,
+unmatched_light_ids,0.0,
+unmatched_dark_ids,0.0,

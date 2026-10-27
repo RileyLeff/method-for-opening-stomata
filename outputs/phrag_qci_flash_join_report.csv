@@ -1,0 +1,11 @@
+metric,value,detail
+surface_points,84,
+light_adapted_point_ids,72,
+light_adapted_json_matches,72,
+dark_adapted_point_ids,84,
+dark_adapted_json_matches,84,
+flash_json_total,85,
+flash_json_active,72,
+flash_json_dark,13,
+unmatched_light_ids,0,
+unmatched_dark_ids,0,

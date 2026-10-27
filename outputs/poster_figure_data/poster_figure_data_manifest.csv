@@ -1,0 +1,5 @@
+figure,csv_file,row_definition,plot_use,units
+1,figure1_initial_morella_curves.csv,One original logged point from either the initial A/Q or A/Ci curve,A and gsw lines; expected_A and expected_gsw provide the red reference lines,A: umol CO2 m-2 s-1; gsw: mol H2O m-2 s-1; Q: umol photons m-2 s-1; Ci/Ca: umol mol-1
+2,figure2_morella_co2_blue_comparison.csv,One of the final five observations from a treatment stage,Small points are gsw; stage_mean_gsw is the connected large point; Q_red and Q_blue build the spectrum bars,gsw: mol H2O m-2 s-1; Q components: umol photons m-2 s-1; CO2/Ci/Ca: umol mol-1
+3,figure3_phrag_aci_gsw_surface_binned.csv,"Median within a 60-ppm Ci bin at one Q level, requiring at least three rows",A and gsw line traces and the interpolated A/Q/C surface,A: umol CO2 m-2 s-1; gsw: mol H2O m-2 s-1; Q: umol photons m-2 s-1; Ci: umol mol-1
+3,figure3_phrag_filtered_rows.csv,One filtered dynamic-assimilation row before 60-ppm Ci binning,"Re-bin, refilter, or rebuild Figure 3 from row-level data",A: umol CO2 m-2 s-1; gsw: mol H2O m-2 s-1; Q: umol photons m-2 s-1; gases: umol mol-1

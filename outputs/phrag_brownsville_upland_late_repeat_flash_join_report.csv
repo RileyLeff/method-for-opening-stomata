@@ -1,0 +1,12 @@
+metric,value,detail
+log_rows,4322.0,
+unique_light_ids_in_log,70.0,
+unique_light_ids_matched,70.0,
+unique_dark_ids_in_log,1.0,
+unique_dark_ids_matched,0.0,
+flash_json_total,70.0,
+flash_json_active,70.0,
+flash_json_dark,0.0,
+minimum_flash_spacing_sec,60.90000009536743,
+unmatched_light_ids,0.0,
+unmatched_dark_ids,1.0,MPF-2540-20260709-18_46_43

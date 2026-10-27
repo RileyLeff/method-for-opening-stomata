@@ -1042,7 +1042,7 @@ def plot_zone_comparison(
     handles = [
         Line2D([0], [0], color=ZONE_COLORS["High"], lw=3, label="High zone"),
         Line2D([0], [0], color=ZONE_COLORS["Low"], lw=3, label="Low zone"),
-        Line2D([0], [0], color="#555555", lw=1.5, ls=":", label="QC-excluded/partial"),
+        Line2D([0], [0], color="#555555", lw=1.5, ls=":", label="Shade pilots"),
     ]
     axes[0, 0].legend(handles=handles, frameon=False, fontsize=8.5, loc="upper left")
     fig.text(
@@ -1050,9 +1050,10 @@ def plot_zone_comparison(
         "Brownsville Phragmites: Sun-Leaf Zone Comparison at Matched Ci",
         ha="left", va="top", fontsize=22, fontweight="bold",
     )
+    primary_counts = qc.loc[qc["primary_comparison"] & ~qc["suspect_run"]].groupby("zone").size()
     fig.text(
         0.055, 0.95,
-        "Thick lines are sun-leaf medians (high n=2, low n=5); thin dotted lines are pilot shade or QC-excluded leaves.",
+        f"Sun-leaf gas comparison: high n={primary_counts.get('High', 0)}, low n={primary_counts.get('Low', 0)}; fluorescence has fewer valid leaves. Dotted traces: shade pilots.",
         ha="left", va="top", fontsize=10.2, color="#555555",
     )
     fig.subplots_adjust(left=0.075, right=0.95, bottom=0.08, top=0.89, hspace=0.34, wspace=0.23)

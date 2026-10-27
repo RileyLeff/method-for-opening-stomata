@@ -1024,35 +1024,50 @@ name = "photo26"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
-    { name = "arviz" },
-    { name = "h5netcdf" },
-    { name = "h5py" },
     { name = "matplotlib" },
     { name = "numpy" },
     { name = "openpyxl" },
     { name = "pandas" },
-    { name = "photorch" },
-    { name = "pymc" },
     { name = "scipy" },
     { name = "seaborn" },
+]
+
+[package.optional-dependencies]
+bayes = [
+    { name = "arviz" },
+    { name = "h5netcdf" },
+    { name = "h5py" },
+    { name = "pymc" },
+    { name = "pytensor" },
+    { name = "xarray" },
+]
+photorch = [
+    { name = "photorch" },
+    { name = "torch" },
+]
+xy = [
     { name = "xy" },
 ]
 
 [package.metadata]
 requires-dist = [
-    { name = "arviz", specifier = ">=1.2.0" },
-    { name = "h5netcdf", specifier = ">=1.8.1" },
-    { name = "h5py", specifier = ">=3.16.0" },
+    { name = "arviz", marker = "extra == 'bayes'", specifier = ">=1.2.0" },
+    { name = "h5netcdf", marker = "extra == 'bayes'", specifier = ">=1.8.1" },
+    { name = "h5py", marker = "extra == 'bayes'", specifier = ">=3.16.0" },
     { name = "matplotlib", specifier = ">=3.11.0" },
     { name = "numpy", specifier = ">=2.4.6" },
     { name = "openpyxl", specifier = ">=3.1.5" },
     { name = "pandas", specifier = ">=3.0.3" },
-    { name = "photorch", specifier = ">=1.4.7" },
-    { name = "pymc", specifier = ">=6.2.0" },
+    { name = "photorch", marker = "extra == 'photorch'", specifier = ">=1.4.7" },
+    { name = "pymc", marker = "extra == 'bayes'", specifier = ">=6.2.0" },
+    { name = "pytensor", marker = "extra == 'bayes'" },
     { name = "scipy", specifier = ">=1.17.1" },
     { name = "seaborn", specifier = ">=0.13.2" },
-    { name = "xy", specifier = ">=0.0.4" },
+    { name = "torch", marker = "extra == 'photorch'" },
+    { name = "xarray", marker = "extra == 'bayes'" },
+    { name = "xy", marker = "extra == 'xy'", specifier = ">=0.0.4" },
 ]
+provides-extras = ["bayes", "photorch", "xy"]
 
 [[package]]
 name = "photorch"

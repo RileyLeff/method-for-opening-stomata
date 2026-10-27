@@ -1,26 +1,28 @@
 [project]
 name = "photo26"
 version = "0.1.0"
-description = "Build A/Ci and A/Q photosynthesis response plots from LI-6800 exports"
+description = "LI-6800 multi-light CO2 response acquisition, fluorescence, and coastal photosynthesis data"
 readme = "README.md"
 authors = [
     { name = "RileyLeff", email = "rileyleff@gmail.com" }
 ]
 requires-python = ">=3.13.7"
 dependencies = [
-    "arviz>=1.2.0",
-    "h5netcdf>=1.8.1",
-    "h5py>=3.16.0",
     "matplotlib>=3.11.0",
     "numpy>=2.4.6",
     "openpyxl>=3.1.5",
     "pandas>=3.0.3",
-    "photorch>=1.4.7",
-    "pymc>=6.2.0",
     "scipy>=1.17.1",
     "seaborn>=0.13.2",
-    "xy>=0.0.4",
 ]
+
+[project.optional-dependencies]
+bayes = ["arviz>=1.2.0", "h5netcdf>=1.8.1", "h5py>=3.16.0", "pymc>=6.2.0", "pytensor", "xarray"]
+photorch = ["photorch>=1.4.7", "torch"]
+xy = ["xy>=0.0.4"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
 
 [project.scripts]
 photo26 = "photo26:main"

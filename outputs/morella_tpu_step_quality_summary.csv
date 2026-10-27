@@ -1,0 +1,14 @@
+metric,value,detail
+log_rows,6883.0,
+logged_duration_min,68.25833333333334,
+light_flash_rows,15.0,
+dark_flash_rows,2.0,
+initial_dark_FvFm,0.7119126157647477,30-min dark adapted
+final_dark_FvFm,0.6277942332904103,only 1.3 min after light-off; not dark adapted
+system_voltage_start,13.3878,V
+system_voltage_end,12.5034,V
+final_flow_median,900.001,umol s-1
+final_CO2_reference_median,419.993,ppm
+final_CO2_sample_median,420.336,ppm
+final_DIAG,18.0,stable
+tail_status,1.0,valid safe endpoint reached; no battery-corrupted rows identified

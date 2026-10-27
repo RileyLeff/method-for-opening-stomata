@@ -1,0 +1,16 @@
+plant_id,spp,demo,location,zone,canopy_depth,canopy_height,illum,health,notes
+P017242026,phragmites_australis,mature,brownsville,high,exterior,top,shade,good,
+P027262026,phragmites_australis,mature,brownsville,low,exterior,bottom,sun,good,Thinner/More dry
+P037262026,phragmites_australis,mature,brownsville,low,exterior,bottom,sun,good,Inflorescence
+P047242026,phragmites_australis,mature,brownsville,high,exterior,top,shade,good,
+P057272026,phragmites_australis,mature,brownsville,low,exterior,bottom,shade,good,
+P067272026,phragmites_australis,mature,brownsville,low,exterior,bottom,sun,good,Some dry leaves and dry spots
+P077272026,phragmites_australis,mature,brownsville,high,exterior,top,shade,good,
+P087282026,phragmites_australis,mature,brownsville,high,exterior,top,shade,good,
+P097282026,phragmites_australis,mature,brownsville,high,exterior,top,shade,good,
+P107302026,phragmites_australis,mature,brownsville,low,exterior,bottom,sun,good,Inflorescence
+P117302026,phragmites_australis,mature,brownsville,low,exterior,bottom,sun,good,Inflorescence
+P127302026,phragmites_australis,mature,brownsville,high,exterior,top,sun,decent,Damages to the upper leaves
+P137302026,phragmites_australis,mature,brownsville,high,exterior,top,sun,good,
+P147312026,phragmites_australis,mature,brownsville,high,exterior,top,sun,good,
+P157312026,phragmites_australis,mature,brownsville,high,exterior,top,sun,good,

@@ -1,2 +1,17 @@
 __pycache__/
 .DS_Store
+.venv/
+.pytest_cache/
+node_modules/
+/tmp/
+/output/
+/references/
+/outputs/harlan_2026/
+/outputs/student_presentation_slide6/
+/outputs/*.zip
+*.ttf
+*.otf
+*.woff
+*.woff2
+*.pptx
+/reproductions/
