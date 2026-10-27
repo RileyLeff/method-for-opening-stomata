@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "Please cite this repository and the specific commit or release used."
 type: software
-title: "Forcing Plants to Participate: LI-6800 programs, coastal photosynthesis data, and analyses"
+title: "A Method for Opening Stomata: LI-6800 programs, coastal photosynthesis data, and analyses"
 authors:
   - family-names: Leff
     given-names: Riley
@@ -9,7 +9,7 @@ authors:
     given-names: Acadia
   - family-names: Gedan
     given-names: Keryn
-repository-code: "https://github.com/RileyLeff/photo26"
+repository-code: "https://github.com/RileyLeff/method-for-opening-stomata"
 url: "https://rileyleff.com/blog/forcing-plants-to-participate"
 license:
   - MIT

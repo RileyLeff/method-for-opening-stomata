@@ -1,4 +1,6 @@
-# Forcing Plants to Participate
+# A Method for Opening Stomata
+
+Low-CO2 priming and automated photosynthetic response mapping on the LI-COR 6800.
 
 **If a leaf isn't photosynthesizing, how can we tell if it's incapable or unwilling?**
 
@@ -35,8 +37,8 @@ release yet. The data are included here; a future Zenodo archive will be a mirro
 
 ```sh
 git lfs install
-git clone https://github.com/RileyLeff/photo26.git
-cd photo26
+git clone https://github.com/RileyLeff/method-for-opening-stomata.git
+cd method-for-opening-stomata
 git lfs pull
 uv sync --frozen
 uv run --frozen python -m unittest discover -s tests -v
